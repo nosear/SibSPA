@@ -1,0 +1,24 @@
+<div class="input-group mt-3">
+   <div class="custom-file">
+     <input id="inputGroupFile01" #fileInput type="file" class="custom-file-input" multiple>
+     <label class="custom-file-label" for="inputGroupFile01">Выберите файл</label>
+   </div>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" (click)="addFile()">Загрузить</button>
+  </div>
+</div>
+<div class="container mt-2" id="fullItem">
+  <ul class="list-group mt-2" *ngFor="let group of files | groupBy:'date'">
+      <li class="list-group-item bg-secondary text-white">
+        {{group.key}}
+          <ul class="list-group mt-1" *ngFor="let file of group.value">
+            <li class="list-group-item bg-light text-dark">{{file.name}}
+              <div class="float-right">
+              <button class="btn-success btn-sm" (click)="download(file)">Скачать</button>
+              <button class="btn-danger btn-sm ml-1" (click)="removeFile(file)">Удалить</button>
+              </div>
+            </li>
+          </ul>
+      </li>    
+  </ul>
+</div>
